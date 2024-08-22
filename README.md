@@ -55,6 +55,10 @@ This works to re-format shitty codes to good quality ones
 npm run format
 ```
 
+### Components
+
+Don't create base components like input, buttons, import the components from [shadcnui components](https://ui.shadcn.com/)
+
 ### Documentation
 
 As for the whole project documentation you can see it from here below
