@@ -33,7 +33,7 @@ export function EmployeeListLayout() {
 				pageDetails = {
 					page: pathName,
 					title: 'Add Employee',
-					sidebar: true,
+					sidebar: false,
 					titlebar: true,
 				};
 				break;
@@ -59,14 +59,14 @@ export function EmployeeListLayout() {
 	}, [pathName]); // Only run when `pathName` changes
 
 	return (
-		<div className="w-full h-full flex justify-between">
+		<div className="flex justify-between h-full">
 			<div className="w-full h-full">
 				{currentPage?.titlebar && (
 					<div className=" text-white bg-slate-700 p-3 border-b border-black font-semibold">
 						{currentPage?.title}
 					</div>
 				)}
-				<div className="overflow-y-auto overflow-x-hidden">
+				<div className="h-full">
 					<Outlet />
 				</div>
 			</div>

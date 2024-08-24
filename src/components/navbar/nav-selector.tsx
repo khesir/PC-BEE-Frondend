@@ -1,8 +1,8 @@
 import {Link, useLocation} from 'react-router-dom';
-import {SidebarItems} from '../project-layout';
+import {SidebarItems} from '../../layout/project-layout';
 import {cn} from '@/lib/utils';
 import {buttonVariants} from '@/components/ui/button';
-import {SidebarItem} from '../project-layout';
+import {SidebarItem} from '../../layout/project-layout';
 
 export function NavSelector({layout}: SidebarItems) {
 	const location = useLocation();

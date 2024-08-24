@@ -1,8 +1,9 @@
 import {Outlet} from 'react-router-dom';
-import {Sidebar} from './navbar/sidebar';
+import {Sidebar} from '../components/navbar/sidebar';
 import {LucideIcon} from 'lucide-react';
-import {Navbar} from './navbar/navbar';
-import {QuickAccessIcons} from './navbar/quick-access-icons';
+import {Navbar} from '../components/navbar/navbar';
+import {QuickAccessIcons} from '../components/navbar/quick-access-icons';
+import { Toaster } from '@/components/ui/toaster';
 
 export type SidebarItem = {
 	title: string;
@@ -31,9 +32,10 @@ export function ProjectLayout({layout}: SidebarItems) {
 					</div>
 				</header>
 				{/* Main Conrtent */}
-				<div className="w-full h-full">
+				<div className="w-full flex-1 overflow-y-auto">
 					<Outlet />
 				</div>
+				<Toaster />
 			</div>
 		</div>
 	);

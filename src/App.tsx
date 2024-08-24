@@ -4,8 +4,8 @@ import LoginPage from './modules/auth/login';
 import ForgotPasswordPage from './modules/auth/forgot-password';
 import EmployeePage from './modules/employee/employee/employee-page';
 import NoPage from './modules/auth/nopage';
-import WelcomePage from './modules/components/welcome';
-import {ProjectLayout} from './modules/components/project-layout';
+import WelcomePage from './modules/auth/welcome';
+import {ProjectLayout} from './layout/project-layout';
 
 import {
 	employeeSidebar,
@@ -15,7 +15,7 @@ import {
 
 import InventoryPage from './modules/inventory/inventory-page';
 import SalesPage from './modules/sales/sales-page';
-import {EmployeeListLayout} from './modules/employee/components/employee-layout';
+import {EmployeeListLayout} from './modules/employee/layout/employee-layout';
 import {CreateEmployee} from './modules/employee/employee/create-employee';
 
 function App() {

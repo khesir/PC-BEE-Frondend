@@ -1,5 +1,5 @@
-import {SidebarItems} from '../project-layout';
-import {JobOrderListing} from '../../joborders/job-order-listing';
+import {SidebarItems} from '../../layout/project-layout';
+import {JobOrderListing} from '../../modules/joborders/job-order-listing';
 import {UserProfile} from '../user/user-bottom-bar';
 import {NavSelector} from './nav-selector';
 import {HotSearch} from './hot-search';
