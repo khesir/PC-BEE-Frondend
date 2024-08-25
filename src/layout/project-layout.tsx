@@ -19,13 +19,13 @@ export type SidebarItems = {
 
 export function ProjectLayout({layout}: SidebarItems) {
 	return (
-		<div className="w-full h-screen bg-slate-600">
-			<div className='flex h-full'>
+		<div className="w-full h-full min-h-0 bg-slate-600 overflow-hidden">
+			<div className='flex h-screen'>
 				{/* Side bar */}
 				<Sidebar layout={layout} />
 				{/* Menu bar */}
-				<div className="flex flex-col w-full h-full">
-					<header className="flex justify-between items-center bg-slate-700 h-[49px] px-3 text-white border-b border-black shadow-sm">
+				<div className="flex flex-col w-full">
+					<header className="flex justify-between flex-shrink-0 items-center bg-slate-700 h-[48px] px-3 text-white border-b border-black shadow-sm">
 						{/* Navbar */}
 						<Navbar />
 						<div className="flex gap-5">
@@ -33,7 +33,7 @@ export function ProjectLayout({layout}: SidebarItems) {
 						</div>
 					</header>
 					{/* Main Conrtent */}
-					<div className="overflow-y-auto h-full">
+					<div className="flex-1">
 						<Outlet />
 					</div>
 					<Toaster />

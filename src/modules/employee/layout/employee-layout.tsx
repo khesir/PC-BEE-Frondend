@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
+import { ActivityLogsPage } from '../components/sections/activity-logs';
 
 type CurrentPage = {
 	page: string;
@@ -59,22 +60,24 @@ export function EmployeeListLayout() {
 	}, [pathName]); // Only run when `pathName` changes
 
 	return (
-		<div className="flex justify-between h-full">
-			<div className="w-full h-full">
-				{currentPage?.titlebar && (
-					<div className=" text-white bg-slate-700 p-3 border-b border-black font-semibold">
-						{currentPage?.title}
+		<div className="flex">
+			<div className="flex flex-col flex-[3]">
+					{currentPage?.titlebar && (
+						<div className=" text-white flex-shrink-0 bg-slate-700 p-3 border-b border-black font-semibold">
+							{currentPage?.title}
+						</div>
+					)}
+					
+					<div className='flex-1 '>
+						<Outlet />
 					</div>
-				)}
-				<div className="h-full">
-					<Outlet />
-				</div>
+
 			</div>
 			{currentPage?.sidebar && (
-				<div className="hidden lg:block bg-slate-700 w-1/3 border-l border-black text-white">
-					<div className="w-full p-5">
+				<div className="hidden h-screen lg:block bg-slate-700 flex-[1] border-l border-black text-white ">
+					<div className="h-full w-full p-5 overflow-y-auto overflow-x-hidden">
 						<span className="text-xl font-bold">Activity Logs</span>
-						<div className="w-full flex flex-col mt-5 ml-2">items</div>
+						<ActivityLogsPage />
 					</div>
 				</div>
 			)}

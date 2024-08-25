@@ -6,7 +6,7 @@ import {HotSearch} from './hot-search';
 
 export function Sidebar(items: SidebarItems) {
 	return (
-		<div className="h-full flex flex-col gap-5 text-white w-[300px] bg-slate-700 ">
+		<div className="h-screen flex flex-col flex-shrink-0 gap-5 text-white w-[250px] bg-slate-700 ">
 			<div className="flex justify-center items-center h-[50px] w-full border-b border-black shadow-sm">
 				<HotSearch />
 			</div>
