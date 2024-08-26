@@ -1,5 +1,6 @@
 import { Employee } from "../../types/types";
 import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { MoreVertical } from "lucide-react";
 
 
@@ -18,9 +19,17 @@ export function UserCard(props : Employee) {
                     </div>
                 </div>
 			</section>
-			<Button variant={'ghost'}>
-				<MoreVertical/>
-			</Button>
+			<Popover>
+                <PopoverTrigger>
+                    <MoreVertical/>
+                </PopoverTrigger>
+                <PopoverContent className="flex flex-col gap-2 bg-slate-800 text-white border-none" side="right" align="start">
+                    <Button onClick={() => {}} variant={'ghost'} className="text-start">Send Message</Button>
+                    <Button onClick={() => {}} variant={'ghost'} className="text-start">Edit Employee</Button>
+                    <Button onClick={() => {}} variant={'ghost'} className="text-start">Payroll</Button>
+                    <Button onClick={() => {}} variant={'ghost'} className="text-start">Assign Joborder</Button>
+                </PopoverContent>
+            </Popover>
 		</div>
     )
 }

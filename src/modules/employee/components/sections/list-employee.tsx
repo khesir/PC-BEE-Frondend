@@ -28,7 +28,7 @@ export function ListEmployee() {
 		</div>
 	}
 	return (
-		<div className="flex flex-col gap-2 h-auto  min-h-0 overflow-y-auto">
+		<div className="flex flex-col flex-1 gap-2 min-h-0 overflow-y-auto">
 			{activeEmployee.map((d,i) => (
 				<UserCard
 					key={i}

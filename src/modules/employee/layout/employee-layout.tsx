@@ -60,21 +60,19 @@ export function EmployeeListLayout() {
 	}, [pathName]); // Only run when `pathName` changes
 
 	return (
-		<div className="flex">
-			<div className="flex flex-col flex-[3]">
-					{currentPage?.titlebar && (
-						<div className=" text-white flex-shrink-0 bg-slate-700 p-3 border-b border-black font-semibold">
-							{currentPage?.title}
-						</div>
-					)}
-					
-					<div className='flex-1 '>
-						<Outlet />
+		<div className="flex flex-row w-full">
+			<div className="flex flex-col flex-[3] h-full">
+				{currentPage?.titlebar && (
+					<div className=" text-white flex-shrink-0 bg-slate-700 p-3 border-b border-black font-semibold">
+						{currentPage?.title}
 					</div>
+				)}
+				
+				<Outlet />
 
 			</div>
 			{currentPage?.sidebar && (
-				<div className="hidden h-screen lg:block bg-slate-700 flex-[1] border-l border-black text-white ">
+				<div className="hidden h-full lg:block bg-slate-700 flex-[1] border-l border-black text-white ">
 					<div className="h-full w-full p-5 overflow-y-auto overflow-x-hidden">
 						<span className="text-xl font-bold">Activity Logs</span>
 						<ActivityLogsPage />
