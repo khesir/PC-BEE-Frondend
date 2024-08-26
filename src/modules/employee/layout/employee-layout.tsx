@@ -60,7 +60,7 @@ export function EmployeeListLayout() {
 	}, [pathName]); // Only run when `pathName` changes
 
 	return (
-		<div className="flex flex-row w-full">
+		<div className="flex flex-row w-full h-[95vh]">
 			<div className="flex flex-col flex-[3] h-full">
 				{currentPage?.titlebar && (
 					<div className=" text-white flex-shrink-0 bg-slate-700 p-3 border-b border-black font-semibold">

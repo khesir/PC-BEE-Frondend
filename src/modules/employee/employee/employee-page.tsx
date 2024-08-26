@@ -4,14 +4,15 @@ import {ListEmployee} from '../components/sections/list-employee';
 
 export default function EmployeePage() {
 	return (
-		<div className="flex flex-col m-5 px-5 gap-7 text-white">
+		<div className="flex flex-col text-white h-full">
 			{/* Search Employee */}
-			<div className='w-full h-full overflow-y-auto'>
-				<Input placeholder="Search Employee" className="h-[35px] text-sm" />
-				<div className='space-y-3'>
-					<AddEmployee />
-					<ListEmployee />
-				</div>
+			<div className='p-5 space-y-5'>
+				<Input placeholder="Search Employee" className="text-sm" />
+				
+				<AddEmployee />
+			</div>
+			<div className='flex flex-col gap-2 h-full overflow-y-auto px-5'>
+				<ListEmployee />
 			</div>
 		</div>
 	);

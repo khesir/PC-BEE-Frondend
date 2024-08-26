@@ -6,12 +6,12 @@ import {HotSearch} from './hot-search';
 
 export function Sidebar(items: SidebarItems) {
 	return (
-		<div className="h-screen flex flex-col flex-shrink-0 gap-5 text-white w-[250px] bg-slate-700 ">
-			<div className="flex justify-center items-center h-[50px] w-full border-b border-black shadow-sm">
+		<div className="h-full flex flex-col flex-shrink-0 text-white w-[250px] bg-slate-700 ">
+			<div className="flex justify-center items-center h-[5vh] w-full border-b border-black shadow-sm">
 				<HotSearch />
 			</div>
-			<div className="h-full flex flex-col justify-between">
-				<div className="space-y-5 pl-3">
+			<div className="h-[95vh] flex flex-col justify-between">
+				<div className="space-y-5 pl-3 mt-5">
 					<div className="flex flex-col">
 						<NavSelector {...items} />
 					</div>
