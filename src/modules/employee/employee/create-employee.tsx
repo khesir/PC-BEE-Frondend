@@ -1,8 +1,6 @@
 import { CreateEmployeeForm } from "../components/form/create-employee-form";
 
 export function CreateEmployee() {
-	
-
 	return (
 		<div className="h-full text-white min-h-0">
 			<div className="h-full p-5 flex flex-col">
@@ -17,7 +15,6 @@ export function CreateEmployee() {
 					<CreateEmployeeForm/>
 				</div>
 			</div>
-			
 		</div>
 	);
 }

@@ -17,7 +17,7 @@ export const employeeSidebar = [
 	},
 	{
 		title: 'Payroll',
-		href: '/payroll',
+		href: '/employee/payroll',
 		label: '1',
 		icon: Banknote,
 		variant: 'ghost',
