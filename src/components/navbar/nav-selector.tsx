@@ -7,7 +7,6 @@ import {SidebarItem} from '../../layout/project-layout';
 export function NavSelector({layout}: SidebarItems) {
 	const location = useLocation();
 	const pathName = location.pathname;
-	console.log(layout);
 	return (
 		<>
 			{layout.map((item: SidebarItem, index: number) => (

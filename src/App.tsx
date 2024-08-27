@@ -23,17 +23,17 @@ import InventoryPage from './features/inventory/inventory-page';
 import SalesPage from './features/sales/sales-page';
 
 // Employeee Components
-import EmployeePage from './features/employee/employee/employee-page';
+import EmployeePage from './features/employee/pages/employee-page';
 import {EmployeeListLayout} from './features/employee/layout/employee-layout';
-import {CreateEmployee} from './features/employee/employee/create-employee';
-import EmployeePayrollPage from './features/employee/employee/employee-payroll-page';
+import {CreateEmployee} from './features/employee/pages/create-employee-page';
+import EmployeePayrollPage from './features/employee/pages/employee-payroll-page';
 
-import Payroll from './features/employee/employee/payroll';
+import Payroll from './features/employee/pages/payroll';
 
 
 import Chat from './features/chat/chat';
-import LeaveRequest from './features/employee/employee/leave-request';
-import EmployeeLeaveRequest from './features/employee/employee/employee-leave-request';
+import LeaveRequest from './features/employee/pages/leave-request';
+import EmployeeLeaveRequest from './features/employee/pages/employee-leave-request';
 
 function App() {
 	return (

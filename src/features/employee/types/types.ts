@@ -24,17 +24,19 @@ export type Designation = {
 
 
 export type Employee = {
-    employee_id: number,
+    employee_id?: number,
+    uuid: string,
     firstname: string,
     middlename: string,
     lastname: string,
     status: string,
-    create_at: Date,
-    last_updated: Date
+    create_at?: Date,
+    last_updated?: Date
 }
 export type ActivityLogs = {
     activitylogs_id: number
-    fullname: string,
+    employee_id: number,
     action: string,
     create_at: Date,
+    fullname?: string,
 }

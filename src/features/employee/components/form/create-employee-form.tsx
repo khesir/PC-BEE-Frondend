@@ -7,22 +7,24 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-import { DepartmentData, DesignationData, EmployeeStatus, EmployeeType, PayrollFrequency } from "../../constant/temp-data";
+import { EmployeeStatus, EmployeeType, Gender, PayrollFrequency } from "../../constant/constant-data";
 import { generateCustomUUID } from "@/lib/utils";
 import { CreateEmployeeSchema } from "../../zod/schema";
 import { Department, Designation } from "../../types/types";
+import { getAllDepartment } from "../../api/department";
+import { getAllDesignation } from "../../api/designation"
 
 export function CreateEmployeeForm(){
     const [uuid, setUUID] = useState<string>()
 	const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 	const [isFetching, setIsFetching] = useState<boolean>(false)
 	const {toast} = useToast()
-	const [designation, setDesignation] = useState<Designation[]>()
-	const [department, setDepartment] = useState<Department[]>()
+	const [designations, setDesignations] = useState<Designation[]>()
+	const [departments, setDepartments] = useState<Department[]>()
 
 	const form = useForm<z.infer<typeof CreateEmployeeSchema>>({
 		resolver: zodResolver(CreateEmployeeSchema),
@@ -59,44 +61,63 @@ export function CreateEmployeeForm(){
 			tin_id: ''
 		}
 	})
-	// Load Data for for dropdown and others that is need for inputs and dropdowns
-	useEffect(()=> {
-		console.log('Fetching Data')
-		const handleData = async () => {
-			try{
-				const data : Designation[] = DesignationData
-				setDesignation(data)
-				const dept : Department[] = DepartmentData
-				setDepartment(dept)
-			} catch (error){
-				toast({
-					variant: "destructive",
-					title: "Something went wrong",
-					description: (
-						<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-							<code className="text-white">{JSON.stringify(error, null, 2)}</code>
-						</pre>
-						),
-				})
+	
+	const fetchData = useCallback(async () => {
+		try {
+			setIsFetching(true);
+
+			// Fetch designations and departments concurrently
+			const [designationResponse, departmentResponse] = await Promise.all([
+				getAllDesignation(),
+				getAllDepartment()
+			]);
+
+			// Update state with the fetched data
+			if (designationResponse) {
+				setDesignations(designationResponse);
 			}
+
+			if (departmentResponse) {
+				setDepartments(departmentResponse);
+			}
+		} catch (error) {
+			toast({
+				variant: "destructive",
+				title: "Something went wrong",
+				description: (
+					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+						<code className="text-white">{JSON.stringify(error, null, 2)}</code>
+					</pre>
+				),
+			});
+		} finally {
+			setIsFetching(false);
 		}
-		const fetchEmployeeID = async () => {
-			const data = generateCustomUUID()
-			setUUID(data)
-		}
-		setIsFetching(true)
-		// Fetches data
-		handleData()
-		// Generate UUID
-		fetchEmployeeID()
-		setIsFetching(false)
-	},[toast])
+	}, [toast]);
+
+	const fetchEmployeeID = useCallback(() => {
+		const data = generateCustomUUID();
+		setUUID(data);
+	}, []);
 
 	useEffect(() => {
-	if (uuid) {
-		form.setValue('employee_id', uuid);
-	}
+		// Fetch data and generate UUID concurrently
+		const loadData = async () => {
+			await Promise.all([
+				fetchData(),
+				fetchEmployeeID()
+			]);
+		};
+
+		loadData();
+	}, [fetchData, fetchEmployeeID]);
+
+	useEffect(() => {
+		if (uuid) {
+			form.setValue('employee_id', uuid); // Assuming `form` is defined and has `setValue` method
+		}
 	}, [uuid, form]);
+
 
 	if (isFetching) {
 		return <div>Loading...</div>; // Or a custom loading spinner/component
@@ -104,7 +125,6 @@ export function CreateEmployeeForm(){
 	
 	// Handle submit
 	const handleSubmit = async (data: z.infer<typeof CreateEmployeeSchema>) => {
-		console.log(data)
 		setIsSubmitting(true)
 		try{
 			toast({
@@ -130,6 +150,7 @@ export function CreateEmployeeForm(){
 			setIsSubmitting(false)
 		}
 	}
+	
     return(
 		<Form {...form}>
 			<form
@@ -182,7 +203,7 @@ export function CreateEmployeeForm(){
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
-											{designation?.map((d,i) => (
+											{designations?.map((d,i) => (
 												<SelectItem key={i} value={String(d.designation_id)}>{d.title}</SelectItem>
 											))}
 										</SelectContent>
@@ -204,7 +225,7 @@ export function CreateEmployeeForm(){
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
-											{department?.map((d,i) => (
+											{departments?.map((d,i) => (
 												<SelectItem key={i} value={String(d.department_id)}>{d.name}</SelectItem>
 											))}
 										</SelectContent>
@@ -336,14 +357,18 @@ export function CreateEmployeeForm(){
 							render = {({field}) => (
 								<FormItem>
 									<FormLabel>Gender</FormLabel>
-									<FormControl>
-										<Input
-											disabled={isSubmitting}
-											placeholder="Male"
-											className="text-black"
-											{...field}
-										/>
-									</FormControl>
+									<Select onValueChange={field.onChange} defaultValue={field.value} disabled={isSubmitting}>
+										<FormControl>
+											<SelectTrigger className="text-black">
+												<SelectValue placeholder="Gender"/>
+											</SelectTrigger>
+										</FormControl>
+										<SelectContent>
+											{Gender.map((d,i) => (
+												<SelectItem key={i} value={d.value}>{d.name}</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
 									<FormMessage/>
 								</FormItem>
 							)}
