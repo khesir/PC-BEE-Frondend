@@ -1,7 +1,7 @@
 import {Routes as Router, Route, BrowserRouter} from 'react-router-dom';
 
 // Setup 
-import WelcomePage from './modules/auth/welcome';
+import WelcomePage from './features/auth/welcome';
 
 // Project layout
 import {
@@ -12,28 +12,28 @@ import {
 import {ProjectLayout} from './layout/project-layout';
 
 // Authentication
-import LoginPage from './modules/auth/login';
-import ForgotPasswordPage from './modules/auth/forgot-password';
-import NoPage from './modules/auth/nopage';
+import LoginPage from './features/auth/login';
+import ForgotPasswordPage from './features/auth/forgot-password';
+import NoPage from './features/auth/nopage';
 
 // Inventory Components
-import InventoryPage from './modules/inventory/inventory-page';
+import InventoryPage from './features/inventory/inventory-page';
 
 // Sales Components
-import SalesPage from './modules/sales/sales-page';
+import SalesPage from './features/sales/sales-page';
 
 // Employeee Components
-import EmployeePage from './modules/employee/employee/employee-page';
-import {EmployeeListLayout} from './modules/employee/layout/employee-layout';
-import {CreateEmployee} from './modules/employee/employee/create-employee';
-import EmployeePayrollPage from './modules/employee/employee/employee-payroll-page';
+import EmployeePage from './features/employee/employee/employee-page';
+import {EmployeeListLayout} from './features/employee/layout/employee-layout';
+import {CreateEmployee} from './features/employee/employee/create-employee';
+import EmployeePayrollPage from './features/employee/employee/employee-payroll-page';
 
-import Payroll from './modules/employee/employee/payroll';
+import Payroll from './features/employee/employee/payroll';
 
 
-import Chat from './modules/chat/chat';
-import LeaveRequest from './modules/employee/employee/leave-request';
-import EmployeeLeaveRequest from './modules/employee/employee/employee-leave-request';
+import Chat from './features/chat/chat';
+import LeaveRequest from './features/employee/employee/leave-request';
+import EmployeeLeaveRequest from './features/employee/employee/employee-leave-request';
 
 function App() {
 	return (

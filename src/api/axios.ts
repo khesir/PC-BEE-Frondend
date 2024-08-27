@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 
 export interface ApiResponse<T> {
 	data: T;
@@ -16,7 +16,7 @@ export const setAuthHeader = (token: string | null): void => {
 	}
 };
 
-axios.defaults.baseURL = 'http://localhost:8080/api';
+axios.defaults.baseURL = process.env.BASE_URL;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const request = async <T>(
@@ -24,9 +24,11 @@ export const request = async <T>(
 	url: string,
 	data?: T
 ): Promise<T> => {
-	let headers: Record<string, string> = {};
-	if (getAuthToken() !== null && getAuthToken() !== 'null') {
-		headers = {Authorization: `Bearer ${getAuthToken()}`};
+	const headers: Record<string, string> = {};
+
+	const authToken = getAuthToken();
+	if (authToken !== null && authToken !== 'null') {
+		headers.Authorization = `Bearer ${authToken}`;
 	}
 
 	return axios({
