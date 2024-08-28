@@ -3,7 +3,7 @@ import {Sidebar} from '../components/navbar/sidebar';
 import {LucideIcon} from 'lucide-react';
 import {Navbar} from '../components/navbar/navbar';
 import {QuickAccessIcons} from '../components/navbar/quick-access-icons';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/sonner';
 
 export type SidebarItem = {
 	title: string;

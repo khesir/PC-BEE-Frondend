@@ -8,24 +8,26 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
-import { useToast } from "@/components/ui/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 import { EmployeeStatus, EmployeeType, Gender, PayrollFrequency } from "../../constant/constant-data";
 import { generateCustomUUID } from "@/lib/utils";
 import { CreateEmployeeSchema } from "../../zod/schema";
-import { Department, Designation } from "../../types/types";
+import { ActivityLogs, Department, Designation, EmployeeEmploymentInformation, EmployeeIdentificationFinancialInformation, EmployeePersonalInformation, EmployeeSalaryInformation } from "../../types/types";
 import { getAllDepartment } from "../../api/department";
 import { getAllDesignation } from "../../api/designation"
+import { AddEmployee, CreateEmployeeIdentificationFinancialInformation, CreateEmployeePersonalInformation, CreateEmploymentInformation, CreateSalaryInformation } from "../../api/employee";
+import { toast } from "sonner";
+import { createActivityLog } from "../../api/activity-logs";
+import { useNavigate } from "react-router-dom";
 
 export function CreateEmployeeForm(){
     const [uuid, setUUID] = useState<string>()
 	const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 	const [isFetching, setIsFetching] = useState<boolean>(false)
-	const {toast} = useToast()
 	const [designations, setDesignations] = useState<Designation[]>()
 	const [departments, setDepartments] = useState<Department[]>()
-
+	const navigate = useNavigate()
 	const form = useForm<z.infer<typeof CreateEmployeeSchema>>({
 		resolver: zodResolver(CreateEmployeeSchema),
 		defaultValues: {
@@ -81,9 +83,7 @@ export function CreateEmployeeForm(){
 				setDepartments(departmentResponse);
 			}
 		} catch (error) {
-			toast({
-				variant: "destructive",
-				title: "Something went wrong",
+			toast("Something went wrong",{
 				description: (
 					<pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
 						<code className="text-white">{JSON.stringify(error, null, 2)}</code>
@@ -93,7 +93,7 @@ export function CreateEmployeeForm(){
 		} finally {
 			setIsFetching(false);
 		}
-	}, [toast]);
+	}, []);
 
 	const fetchEmployeeID = useCallback(() => {
 		const data = generateCustomUUID();
@@ -127,19 +127,72 @@ export function CreateEmployeeForm(){
 	const handleSubmit = async (data: z.infer<typeof CreateEmployeeSchema>) => {
 		setIsSubmitting(true)
 		try{
-			toast({
-				variant:'default',
-				title:'Data sent to backend',
-				description: (
-                    <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                        <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-                    </pre>
-                    ),
+
+			const employee = {
+				uuid: data.employee_id,
+				firstname: data.firstname,
+				middlename: data.middlename,
+				lastname: data.lastname,
+				status: 'active'
+			}
+			console.log(data)
+			const {employee_id} : any = await AddEmployee(employee)
+			console.log(employee_id)
+			toast("Success",{
+				description: `Employee ${employee_id} Created. Now Creating employee information` ,
 			})
+			const personal_info : EmployeePersonalInformation= {
+				employee_id: Number(employee_id),
+				birthday: data.birthday,
+				gender: data.gender,
+				phone: data.phone,
+				email: data.email,
+				address_line: data.addressLine,
+				postal_code: data.postalCode,
+				emergency_contact_name: 'N/A',
+				emergency_contact_phone: 'N/A',
+				emergency_contact_relationship: 'N/A'
+			}
+			const employment_info : EmployeeEmploymentInformation = {
+				employee_id: Number(employee_id),
+				department_id: Number(data.department_id),
+				designation_id: Number(data.designation_id),
+				employee_type: data.employee_type,
+				employee_status: data.employee_status
+			}
+			const salary_info : EmployeeSalaryInformation = {
+				employee_id: Number(employee_id),
+				payroll_frequency: data.payroll_frequency,
+				base_salary: Number(data.base_salary)
+			}
+			const identification_financial_info : EmployeeIdentificationFinancialInformation = {
+				employee_id: Number(employee_id),
+				pag_ibig_id: data.pagibig_id,
+				sss_id: data.sssid,
+				philhealth_id: data.philhealth_id,
+				tin: data.tin_id,
+				bank_account_number: '123123'
+			}
+			await Promise.all([
+				await CreateEmployeePersonalInformation(personal_info),
+				await CreateEmploymentInformation(employment_info),
+				await CreateSalaryInformation(salary_info),
+				await CreateEmployeeIdentificationFinancialInformation(identification_financial_info),
+			])
+			
+			toast("Success",{
+				description: 'Employee Data has been successfully created',
+			})
+
+
+			const activity_log: ActivityLogs = {
+				'employee_id': 1,
+				'action': `Create Employee ID: ${employee_id}`
+			}
+			await createActivityLog(activity_log)
+			navigate('/employee/users')
 		} catch (error){
-			toast({
-                variant: "destructive",
-                title: "Something went wrong",
+			toast("Error",{
                 description: (
                     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
                         <code className="text-white">{JSON.stringify(error, null, 2)}</code>
