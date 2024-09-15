@@ -29,7 +29,7 @@ export function Sidebar() {
 					asChild
 				>
 					<Link to="/dashboard" className="flex items-center gap-2">
-						<img src="icon.svg" alt="Icon" className="w-8 h-8" />
+						<img src="icon.svg" alt="Icon" className="w-6 h-6" />
 						<h1
 							className={cn(
 								'font-bold text-lg whitespace-nowrap transition-[transform,opacity,display] ease-in-out duration-300',

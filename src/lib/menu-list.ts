@@ -5,6 +5,9 @@ import {
 	LayoutGrid,
 	LucideIcon,
 	PackageOpenIcon,
+	Terminal,
+	Network,
+	BookCopy,
 } from 'lucide-react';
 
 type Submenu = {
@@ -38,31 +41,59 @@ export function getMenuList(pathname: string): Group[] {
 					icon: LayoutGrid,
 					submenus: [],
 				},
+				{
+					href: '/activity',
+					label: 'Activity',
+					active: pathname.includes('/activity'),
+					icon: Network,
+					submenus: [
+						{
+							href: '/activity/overview',
+							label: 'Overview',
+							active: pathname === '/activity/overview',
+						},
+						{
+							href: '/activity/attendance',
+							label: 'Attendance',
+							active: pathname === '/activity/attendance',
+						},
+						{
+							href: '/activity/interchat',
+							label: 'Chat',
+							active: pathname === '/activity/chat',
+						},
+					],
+				},
 			],
 		},
 		{
 			groupLabel: 'Systems',
 			menus: [
 				{
-					href: '',
-					label: 'EMS Overview',
+					href: '/ems',
+					label: 'EMS',
 					active: pathname.includes('/ems'),
 					icon: Users,
 					submenus: [
 						{
-							href: '/employee',
+							href: '/ems/overview',
+							label: 'Overview',
+							active: pathname === '/ems/overview',
+						},
+						{
+							href: '/ems/employees',
 							label: 'Employees',
-							active: pathname === '/employee',
+							active: pathname === '/ems/employees',
 						},
 						{
-							href: '/payroll',
+							href: '/ems/payroll',
 							label: 'Payroll',
-							active: pathname === '/payroll',
+							active: pathname === '/ems/payroll',
 						},
 						{
-							href: '/leaveRequest',
+							href: '/ems/leave',
 							label: 'Leave Requests',
-							active: pathname === '/leaveRequest',
+							active: pathname === '/leave',
 						},
 					],
 				},
@@ -71,14 +102,41 @@ export function getMenuList(pathname: string): Group[] {
 					label: 'Sales',
 					active: pathname.includes('/sales'),
 					icon: Tag,
-					submenus: [],
+					submenus: [
+						{
+							href: '/sales/overview',
+							label: 'Overview',
+							active: pathname === '/sales/overview',
+						},
+						{
+							href: '/sales/services',
+							label: 'Services',
+							active: pathname === '/sales/services',
+						},
+					],
 				},
 				{
 					href: '/inventory',
 					label: 'Inventory',
 					active: pathname.includes('/inventory'),
 					icon: PackageOpenIcon,
-					submenus: [],
+					submenus: [
+						{
+							href: '/inventory/overview',
+							label: 'Overview',
+							active: pathname === '/inventory/overview',
+						},
+						{
+							href: '/inventory/items',
+							label: 'Items',
+							active: pathname === '/inventory/items',
+						},
+						{
+							href: '/inventory/orders',
+							label: 'Orders',
+							active: pathname === '/inventory/orders',
+						},
+					],
 				},
 			],
 		},
@@ -86,9 +144,16 @@ export function getMenuList(pathname: string): Group[] {
 			groupLabel: 'Settings',
 			menus: [
 				{
-					href: '/account',
-					label: 'Account',
-					active: pathname.includes('/account'),
+					href: '/terminal',
+					label: 'Terminal',
+					active: pathname.includes('/terminal'),
+					icon: Terminal,
+					submenus: [],
+				},
+				{
+					href: '/setting',
+					label: 'Settings',
+					active: pathname.includes('/settings'),
 					icon: Settings,
 					submenus: [],
 				},
