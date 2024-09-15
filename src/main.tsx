@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import './css/index.css';
+import './css/global.css';
+import {ThemeProvider} from './components/providers/theme-provider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<App />
-	</React.StrictMode>
+		<ThemeProvider>
+			<App />
+		</ThemeProvider>
+	</React.StrictMode>,
 );
 
 // Use contextBridge

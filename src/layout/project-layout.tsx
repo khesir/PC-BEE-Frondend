@@ -1,8 +1,8 @@
 import {Outlet} from 'react-router-dom';
-import {Sidebar} from '../components/navbar/sidebar';
+import {Sidebar} from '../components/admin-panel/sidebar';
 import {LucideIcon} from 'lucide-react';
-import {Navbar} from '../components/navbar/navbar';
-import {QuickAccessIcons} from '../components/navbar/quick-access-icons';
+import {Navbar} from '../components/admin-panel/navbar';
+import {QuickAccessIcons} from '../components/admin-panel/quick-access-icons';
 import { Toaster } from '@/components/ui/sonner';
 
 export type SidebarItem = {
