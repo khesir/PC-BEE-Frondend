@@ -12,7 +12,9 @@ import ServicePage from './pages/sales/service';
 import InventoryPage from './pages/inventory/overview';
 import ItemPage from './pages/inventory/items';
 import OrderPage from './pages/inventory/orders';
-import CreateEmployeePage from './pages/employee/create-employee';
+import CreateEmployeePage from './pages/employee/section/employee/pages/create-employee';
+import PayrollCreatePage from './pages/employee/section/payroll/create/payroll-create';
+import PayrollOverview from './pages/employee/section/payroll/details/onpayroll-details';
 
 function App() {
 	return (
@@ -24,9 +26,14 @@ function App() {
 
 					<Route path="ems">
 						<Route path="overview" element={<OverviewPage />} />
+
 						<Route path="employees" element={<EmployeePage />} />
 						<Route path="employees/create" element={<CreateEmployeePage />} />
+
 						<Route path="payroll" element={<PayrollPage />} />
+						<Route path="payroll/:id/details" element={<PayrollOverview />} />
+						<Route path="payroll/:id/create/" element={<PayrollCreatePage />} />
+
 						<Route path="leave" element={<LeavePage />} />
 					</Route>
 

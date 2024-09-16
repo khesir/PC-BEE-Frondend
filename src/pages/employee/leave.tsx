@@ -9,8 +9,22 @@ import {
 } from '@/components/ui/breadcrumb';
 import OverviewSection from './section/overview/overview-section';
 import {Link} from 'react-router-dom';
+import Cookies from 'js-cookie';
+import {useState, useEffect} from 'react';
+import {mails} from './section/leave/data';
+import {Mail} from './section/leave/mail';
 
 export default function LeavePage() {
+	const [defaultLayout, setDefaultLayout] = useState<any>();
+	const [defaultCollapsed, setDefaultCollapsed] = useState<any>();
+
+	useEffect(() => {
+		const layout = Cookies.get('react-resizable-panels:layout:mail');
+		const collapsed = Cookies.get('react-resizable-panels:collapsed');
+
+		setDefaultLayout(layout ? JSON.parse(layout) : undefined);
+		setDefaultCollapsed(collapsed ? JSON.parse(collapsed) : undefined);
+	}, []);
 	return (
 		<ContentLayout title="Employee Management System">
 			<Breadcrumb>
@@ -38,7 +52,12 @@ export default function LeavePage() {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<OverviewSection />
+			<Mail
+				mails={mails}
+				defaultLayout={defaultLayout}
+				defaultCollapsed={defaultCollapsed}
+				navCollapsedSize={4}
+			/>{' '}
 		</ContentLayout>
 	);
 }

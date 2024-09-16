@@ -7,12 +7,12 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import {Link, useSearchParams} from 'react-router-dom';
-import PayrollSection from './section/payroll/payroll/payroll-section';
+import {Link, useParams, useSearchParams} from 'react-router-dom';
 
-export default function PayrollPage() {
+export default function PayrollOverview() {
+	const {id} = useParams();
 	const [searchParams] = useSearchParams();
-
+	console.log(id);
 	return (
 		<ContentLayout title="Payroll Management System">
 			<Breadcrumb>
@@ -36,11 +36,16 @@ export default function PayrollPage() {
 					</BreadcrumbItem>
 					<BreadcrumbSeparator />
 					<BreadcrumbItem>
-						<BreadcrumbPage>Payroll</BreadcrumbPage>
+						<BreadcrumbLink asChild>
+							<Link to="/ems/payroll/">Payroll</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>Details</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<PayrollSection searchParams={searchParams} />
 		</ContentLayout>
 	);
 }
