@@ -12,6 +12,7 @@ import ServicePage from './pages/sales/service';
 import InventoryPage from './pages/inventory/overview';
 import ItemPage from './pages/inventory/items';
 import OrderPage from './pages/inventory/orders';
+import CreateEmployeePage from './pages/employee/create-employee';
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Route path="ems">
 						<Route path="overview" element={<OverviewPage />} />
 						<Route path="employees" element={<EmployeePage />} />
+						<Route path="employees/create" element={<CreateEmployeePage />} />
 						<Route path="payroll" element={<PayrollPage />} />
 						<Route path="leave" element={<LeavePage />} />
 					</Route>

@@ -7,12 +7,9 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import {Link, useSearchParams} from 'react-router-dom';
-import EmployeeSection from './section/employee/employee-section';
+import {Link} from 'react-router-dom';
 
-export default function EmployeePage() {
-	const [searchParams] = useSearchParams();
-
+export default function CreateEmployeePage() {
 	return (
 		<ContentLayout title="Employee Management System">
 			<Breadcrumb>
@@ -36,11 +33,17 @@ export default function EmployeePage() {
 					</BreadcrumbItem>
 					<BreadcrumbSeparator />
 					<BreadcrumbItem>
-						<BreadcrumbPage>Employees</BreadcrumbPage>
+						<BreadcrumbLink asChild>
+							<Link to="/ems/employees">Employees</Link>
+						</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>Create</BreadcrumbPage>
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<EmployeeSection searchParams={searchParams} />
+			<p>Still working on form</p>
 		</ContentLayout>
 	);
 }
