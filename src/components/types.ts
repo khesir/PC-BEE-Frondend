@@ -85,3 +85,40 @@ export type Designation = {
 	last_updated: string;
 	deleted_at?: string;
 };
+
+export type Payroll = {
+	payroll_id?: number;
+	start: string;
+	end: string;
+	pay_date: string;
+	payroll_finished?: string;
+	status: string;
+	created_at?: string;
+	last_updated?: string;
+	deleted_at?: string;
+};
+
+export type OnPayrollJoin = {
+	on_payroll: OnPayroll;
+	employee: Employee;
+	payroll_approval: PayrollApproval;
+};
+
+export type OnPayroll = {
+	on_payroll_id?: number;
+	payroll_id: number;
+	employee_id: number;
+	created_at?: string;
+	last_updated?: string;
+	deleted_at?: string;
+};
+
+export type PayrollApproval = {
+	payroll_approval_id?: number;
+	on_payroll_id: number;
+	signatory_id: number;
+	approval_status: string;
+	created_at?: string;
+	last_updated?: string;
+	deleted_at?: string;
+};
