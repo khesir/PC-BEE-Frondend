@@ -8,7 +8,7 @@ import {
 	TooltipProvider,
 } from '@/components/ui/tooltip';
 import {MoonIcon, SunIcon} from 'lucide-react';
-import {useTheme} from './providers/theme-provider';
+import {useTheme} from '../pages/_providers/theme-provider';
 
 export function ModeToggle() {
 	const {setTheme, theme} = useTheme();
