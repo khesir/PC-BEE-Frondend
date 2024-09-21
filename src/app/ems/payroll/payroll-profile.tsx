@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import {usePayrollStore} from '@/hooks/use-payroll-store';
-import {dateParser} from '@/lib/utils';
+import {dateParser} from '@/lib/util/utils';
 import {File} from 'lucide-react';
 import {useNavigate} from 'react-router-dom';
 

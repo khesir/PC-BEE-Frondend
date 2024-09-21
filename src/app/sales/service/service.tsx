@@ -1,4 +1,3 @@
-import {ContentLayout} from '@/pages/_layout/general/content-layout';
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -9,6 +8,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import {Link} from 'react-router-dom';
 import OverviewContent from '../content/overview-content';
+import {ContentLayout} from '@/app/_components/layout/general/content-layout';
 
 export default function ServicePage() {
 	return (

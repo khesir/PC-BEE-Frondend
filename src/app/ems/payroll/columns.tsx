@@ -1,5 +1,5 @@
 import {Payroll} from '@/components/types';
-import {dateParser} from '@/lib/utils';
+import {dateParser} from '@/lib/util/utils';
 import {ColumnDef} from '@tanstack/react-table';
 
 export const payrollColumn: ColumnDef<Payroll>[] = [

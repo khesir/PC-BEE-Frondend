@@ -17,7 +17,7 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import {usePayrollStore} from '@/hooks/use-payroll-store';
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {
 	ChevronLeftIcon,
 	ChevronRightIcon,

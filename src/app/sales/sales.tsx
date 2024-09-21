@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import {Link} from 'react-router-dom';
 import OverviewContent from './content/overview-content';
-import {ContentLayout} from '../_layout/general/content-layout';
+import {ContentLayout} from '../_components/layout/general/content-layout';
 
 export default function SalesPage() {
 	return (

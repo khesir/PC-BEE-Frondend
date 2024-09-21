@@ -1,4 +1,4 @@
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {useStore} from '@/hooks/use-store';
 import {Button} from '@/components/ui/button';
 import {useSidebarToggle} from '@/hooks/use-sidebar-toggle';

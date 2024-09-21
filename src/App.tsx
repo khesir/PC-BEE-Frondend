@@ -1,5 +1,5 @@
 import {Routes as Router, Route, BrowserRouter} from 'react-router-dom';
-import AdminPanelLayout from './app/_layout/admin/admin-panel-layout';
+import AdminPanelLayout from './app/_components/layout/admin/admin-panel-layout';
 import AuthenticationPage from './app/authentication/page';
 import CreateEmployeePage from './app/ems/employee/create/create-employee';
 import EmployeePage from './app/ems/employee/main/employees-page';
@@ -11,7 +11,7 @@ import PayrollPage from './app/ems/payroll/payroll-page';
 import ItemPage from './app/inventory/items';
 import OrderPage from './app/inventory/orders';
 import InventoryPage from './app/inventory/overview';
-import NotFound from './app/not-found';
+import NotFound from './app/_not-found';
 import DashboardPage from './app/page';
 import ServicePage from './app/sales/service/service';
 import SalesPage from './app/sales/sales';

@@ -3,7 +3,7 @@ import {Checkbox} from '@/components/ui/checkbox';
 import {ColumnDef} from '@tanstack/react-table';
 import {Employee} from '@/components/types';
 import {CellAction} from './cel-action';
-import {dateParser} from '@/lib/utils';
+import {dateParser} from '@/lib/util/utils';
 
 export const columns: ColumnDef<Employee>[] = [
 	{

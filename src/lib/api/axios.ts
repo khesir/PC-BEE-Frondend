@@ -1,5 +1,5 @@
 import axios, {AxiosRequestConfig} from 'axios';
-
+import configManager from '@/_config/config';
 export interface PaginationResponse<T> {
 	total_data: number;
 	offset: number;
@@ -25,7 +25,7 @@ export const setAuthHeader = (token: string | null): void => {
 	}
 };
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = configManager.getBaseURL();
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const request = async <T>(

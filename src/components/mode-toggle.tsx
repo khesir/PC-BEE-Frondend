@@ -1,5 +1,6 @@
 'use client';
 
+import {useTheme} from '@/app/_components/providers/theme-provider';
 import {Button} from '@/components/ui/button';
 import {
 	Tooltip,
@@ -8,7 +9,6 @@ import {
 	TooltipProvider,
 } from '@/components/ui/tooltip';
 import {MoonIcon, SunIcon} from 'lucide-react';
-import {useTheme} from '../pages/_providers/theme-provider';
 
 export function ModeToggle() {
 	const {setTheme, theme} = useTheme();

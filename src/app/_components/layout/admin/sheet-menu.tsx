@@ -1,7 +1,6 @@
 import {MenuIcon, PanelsTopLeft} from 'lucide-react';
 
 import {Button} from '@/components/ui/button';
-import {Menu} from '@/pages/_layout/admin/menu';
 import {
 	Sheet,
 	SheetHeader,
@@ -10,6 +9,7 @@ import {
 	SheetTitle,
 } from '@/components/ui/sheet';
 import {Link} from 'react-router-dom';
+import {Menu} from './menu';
 
 export function SheetMenu() {
 	return (

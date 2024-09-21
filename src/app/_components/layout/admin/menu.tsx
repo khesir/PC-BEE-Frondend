@@ -2,7 +2,7 @@
 
 import {Ellipsis, LogOut} from 'lucide-react';
 
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {Button} from '@/components/ui/button';
 import {ScrollArea} from '@/components/ui/scroll-area';
 import {
@@ -12,7 +12,7 @@ import {
 	TooltipProvider,
 } from '@/components/ui/tooltip';
 import {Link, useLocation} from 'react-router-dom';
-import {getMenuList} from '@/lib/menu-list';
+import {getMenuList} from '@/lib/util/menu-list';
 import {CollapseMenuButton} from './collapse-menu-button';
 
 interface MenuProps {

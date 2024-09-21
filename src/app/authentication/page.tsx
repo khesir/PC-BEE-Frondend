@@ -1,6 +1,6 @@
 import UserAuthForm from '@/components/forms/user-auth-form';
 import {buttonVariants} from '@/components/ui/button';
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {Link} from 'react-router-dom';
 
 export default function AuthenticationPage() {
