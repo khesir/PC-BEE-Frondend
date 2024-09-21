@@ -34,7 +34,7 @@ import {
 import {Button, buttonVariants} from '@/components/ui/button';
 import {ChevronLeftIcon, ChevronRightIcon, Plus} from 'lucide-react';
 import {DoubleArrowLeftIcon, DoubleArrowRightIcon} from '@radix-ui/react-icons';
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {useEmployeeStore} from '@/hooks/use-employee-story';
 import {Employee} from '@/components/types';
 interface DataTableProps<TData, TValue> {

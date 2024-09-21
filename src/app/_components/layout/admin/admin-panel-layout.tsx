@@ -1,6 +1,6 @@
 'use client';
 
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {useStore} from '@/hooks/use-store';
 import {useSidebarToggle} from '@/hooks/use-sidebar-toggle';
 import {Outlet} from 'react-router-dom';

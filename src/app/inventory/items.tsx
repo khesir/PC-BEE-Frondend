@@ -1,4 +1,4 @@
-import {ContentLayout} from '@/pages/_layout/general/content-layout';
+import {ContentLayout} from '@/app/_components/layout/general/content-layout';
 import {
 	Breadcrumb,
 	BreadcrumbItem,

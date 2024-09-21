@@ -2,7 +2,7 @@
 
 import {Link, LucideIcon} from 'lucide-react';
 
-import {cn} from '@/lib/utils';
+import {cn} from '@/lib/util/utils';
 import {Tooltip, TooltipContent, TooltipTrigger} from '@/components/ui/tooltip';
 import {buttonVariants} from '@/components/ui/button';
 

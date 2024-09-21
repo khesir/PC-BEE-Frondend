@@ -28,7 +28,7 @@ import {
 } from '@/components/ui/pagination';
 import {Separator} from '@/components/ui/separator';
 import {useEmployeeStore} from '@/hooks/use-employee-story';
-import {dateParser} from '@/lib/utils';
+import {dateParser} from '@/lib/util/utils';
 import {ChevronLeft, ChevronRight, File, MoreVertical} from 'lucide-react';
 import {useEffect, useState} from 'react';
 
