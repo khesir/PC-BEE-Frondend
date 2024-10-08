@@ -1,8 +1,8 @@
 import {Routes as Router, Route, BrowserRouter} from 'react-router-dom';
 import AdminPanelLayout from './app/_components/layout/admin/admin-panel-layout';
 import AuthenticationPage from './app/authentication/page';
-import CreateEmployeePage from './app/ems/employee/create/create-employee';
-import EmployeePage from './app/ems/employee/main/employees-page';
+import CreateEmployeePage from './app/ems/employee/create/create-employee-page';
+import EmployeePage from './app/ems/employee/employeeList/employees-page';
 import LeavePage from './app/ems/leave/leave';
 import EMSPage from './app/ems/page';
 import PayrollCreatePage from './app/ems/payroll/create/payroll-create';

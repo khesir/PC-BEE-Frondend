@@ -8,6 +8,7 @@ import {
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import {Link} from 'react-router-dom';
+import CreateEmployeSection from './create-employee-section';
 
 export default function CreateEmployeePage() {
 	return (
@@ -43,7 +44,7 @@ export default function CreateEmployeePage() {
 					</BreadcrumbItem>
 				</BreadcrumbList>
 			</Breadcrumb>
-			<p>Still working on form</p>
+			<CreateEmployeSection />
 		</ContentLayout>
 	);
 }

@@ -29,7 +29,13 @@ import {
 import {Separator} from '@/components/ui/separator';
 import {useEmployeeStore} from '@/hooks/use-employee-story';
 import {dateParser} from '@/lib/util/utils';
-import {ChevronLeft, ChevronRight, File, MoreVertical} from 'lucide-react';
+import {
+	ChevronLeft,
+	ChevronRight,
+	CreditCard,
+	File,
+	MoreVertical,
+} from 'lucide-react';
 import {useEffect, useState} from 'react';
 
 export function EmployeeProfile() {
@@ -228,6 +234,59 @@ export function EmployeeProfile() {
 									<div className="flex items-center justify-between">
 										<dt className="text-muted-foreground">Payroll Frequency</dt>
 										<dd>{salaryInfo.payroll_frequency}</dd>
+									</div>
+								</dl>
+							</div>
+						</>
+					)}
+					{financialInfo && (
+						<>
+							<Separator className="my-4" />
+							<div className="grid gap-3">
+								<div className="font-semibold">Payment Information</div>
+								<dl className="grid gap-3">
+									<div className="flex items-center justify-between">
+										<dt className="flex items-center gap-1 text-muted-foreground">
+											<CreditCard className="h-4 w-4" />
+											Bank Account Number
+										</dt>
+										<dd>{financialInfo.bank_account_number}</dd>
+									</div>
+								</dl>
+								<dl className="grid gap-3">
+									<div className="flex items-center justify-between">
+										<dt className="flex items-center gap-1 text-muted-foreground">
+											<CreditCard className="h-4 w-4" />
+											Pag-Ibig
+										</dt>
+										<dd>{financialInfo.pag_ibig_id}</dd>
+									</div>
+								</dl>
+								<dl className="grid gap-3">
+									<div className="flex items-center justify-between">
+										<dt className="flex items-center gap-1 text-muted-foreground">
+											<CreditCard className="h-4 w-4" />
+											Phil Health
+										</dt>
+										<dd>{financialInfo.philhealth_id}</dd>
+									</div>
+								</dl>
+								<dl className="grid gap-3">
+									<div className="flex items-center justify-between">
+										<dt className="flex items-center gap-1 text-muted-foreground">
+											<CreditCard className="h-4 w-4" />
+											SSS
+										</dt>
+										<dd>{financialInfo.sss_id}</dd>
+									</div>
+								</dl>
+								<dl className="grid gap-3">
+									<div className="flex items-center justify-between">
+										<dt className="flex items-center gap-1 text-muted-foreground">
+											<CreditCard className="h-4 w-4" />
+											TIN ID
+										</dt>
+										<dd>{financialInfo.tin}</dd>
 									</div>
 								</dl>
 							</div>
